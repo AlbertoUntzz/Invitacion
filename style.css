@@ -1,0 +1,176 @@
+/* 1. Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. El Body con la Imagen de Fondo Fija */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000; /* Fondo base por seguridad */
+    
+    /* Tu imagen de fondo aplicada directamente al body */
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                      url('assets/twentytwo.png');
+    background-size: cover;          /* Cubre toda la pantalla sin deformarse */
+    background-position: center top; /* Centrada para que se vea el "22" de la foto */
+    background-attachment: fixed;    /* Importante: el fondo no se mueve */
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+}
+
+/* 3. Contenedor Principal (Flex para centrar el texto) */
+.pantalla-celular {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 4. EL TRUCO: Definimos la animación para todo el bloque de contenido */
+.contenido-principal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    /* Configuración de la animación */
+    opacity: 0;                   /* Empieza invisible */
+    animation: aparecerTexto 1.5s ease-out forwards;
+    animation-delay: 3s;          /* ¡ESTO HACE LA ESPERA DE 3 SEGUNDOS! */
+}
+
+/* 5. Definimos cómo es la animación de "Aparecer" */
+@keyframes aparecerTexto {
+    from {
+        opacity: 0;               /* Invisible */
+        transform: translateY(20px); /* Sube un poquito desde abajo */
+    }
+    to {
+        opacity: 1;               /* Completamente visible */
+        transform: translateY(0);   /* Posición final */
+    }
+}
+
+/* --- Estilos de tus Tarjetas (para que se lean bien) --- */
+.info-evento, .confirmacion-contenedor, .seccion-contador {
+    background: rgba(255, 255, 255, 0.1); /* Efecto vidrio muy sutil */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Estilos de tus textos y botones (los que ya tenías) */
+.tag-edad {
+    letter-spacing: 4px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.imagen-titulo {
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+.fecha {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: #ffd700;
+    margin: 10px 0;
+}
+
+.boton-whatsapp {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    width: 100%;
+}
+/* 4. Estilo de las tarjetas (Info, Contador, Confirmación) */
+.info-evento, .confirmacion-contenedor, .seccion-contador {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 30px 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* --- Títulos y Tipografías --- */
+h1, .fecha {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #2198FC;
+    margin-bottom: 10px;
+}
+
+.imagen-titulo {
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+/* --- Contador --- */
+#contador {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tiempo {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.tiempo span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- Botón WhatsApp --- */
+.boton-whatsapp {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.boton-whatsapp:hover {
+    transform: scale(1.05);
+}
+
+
+
+
