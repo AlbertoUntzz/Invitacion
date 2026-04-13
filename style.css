@@ -1,140 +1,182 @@
-/* 1. Reset Básico */
+/* =========================
+   1. RESET
+========================= */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* 2. El Body con la Imagen de Fondo Fija */
+/* =========================
+   2. BODY
+========================= */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #000; /* Fondo base por seguridad */
-    
-    /* Tu imagen de fondo aplicada directamente al body */
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
-                      url('assets/twentytwo.png');
-    background-size: cover;          /* Cubre toda la pantalla sin deformarse */
-    background-position: center top; /* Centrada para que se vea el "22" de la foto */
-    background-attachment: fixed;    /* Importante: el fondo no se mueve */
-    background-repeat: no-repeat;
-    
-    min-height: 100vh;
+    background-color: #000000;
+    color: white;
 }
 
-/* 3. Contenedor Principal (Flex para centrar el texto) */
+/* =========================
+   3. HERO (IMAGEN PRINCIPAL)
+========================= */
+.hero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: #000;
+    position: relative;
+    width: 100%;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 90%;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+.overlay-text p {
+    letter-spacing: 3px;
+    font-size: 3rem;
+}
+.overlay-text h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 6rem;
+    color: #b9b8b8;
+    margin: 10px 0;
+}
+.overlay-text .edad {
+    font-size: 2rem;
+    color: #ebe5e5;
+}
+
+
+/* Solo en pantallas grandes */
+@media (min-width: 1024px) {
+    .hero img {
+        width: 100%;
+        max-height: 90vh;   /* no se hace gigante vertical */
+        object-fit: cover;  /* se adapta bonito */
+    }
+}
+
+/* Degradado elegante abajo */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #000);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.30);
+}
+/* =========================
+   4. CONTENEDOR PRINCIPAL
+========================= */
 .pantalla-celular {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    position: relative;
-    z-index: 10;
 }
 
-/* 4. EL TRUCO: Definimos la animación para todo el bloque de contenido */
+/* =========================
+   5. ANIMACIÓN
+========================= */
 .contenido-principal {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    color: white;
-    
-    /* Configuración de la animación */
-    opacity: 0;                   /* Empieza invisible */
+
+    opacity: 0;
     animation: aparecerTexto 1.5s ease-out forwards;
-    animation-delay: 3s;          /* ¡ESTO HACE LA ESPERA DE 3 SEGUNDOS! */
+    animation-delay: 1.5s;
 }
 
-/* 5. Definimos cómo es la animación de "Aparecer" */
 @keyframes aparecerTexto {
     from {
-        opacity: 0;               /* Invisible */
-        transform: translateY(20px); /* Sube un poquito desde abajo */
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-        opacity: 1;               /* Completamente visible */
-        transform: translateY(0);   /* Posición final */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* --- Estilos de tus Tarjetas (para que se lean bien) --- */
-.info-evento, .confirmacion-contenedor, .seccion-contador {
-    background: rgba(255, 255, 255, 0.1); /* Efecto vidrio muy sutil */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
+/* =========================
+   6. TARJETAS (GLASS EFFECT)
+========================= */
+.info-evento,
+.confirmacion-contenedor,
+.seccion-contador {
     width: 100%;
+    margin-bottom: 25px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
-/* Estilos de tus textos y botones (los que ya tenías) */
-.tag-edad {
-    letter-spacing: 4px;
-    font-weight: 300;
-    margin-bottom: 15px;
-}
-
-.imagen-titulo {
-    max-width: 80%;
-    margin-bottom: 30px;
-}
-
+/* =========================
+   7. TIPOGRAFÍA
+========================= */
 .fecha {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: #ffd700;
     margin: 10px 0;
 }
 
-.boton-whatsapp {
-    display: inline-block;
-    background: #25d366;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 30px;
-    text-decoration: none;
+.hora {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.nombre-lugar {
     font-weight: bold;
+    margin-top: 10px;
+}
+
+.direccion {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.vestimenta {
     margin-top: 15px;
-    width: 100%;
-}
-/* 4. Estilo de las tarjetas (Info, Contador, Confirmación) */
-.info-evento, .confirmacion-contenedor, .seccion-contador {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    padding: 30px 20px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    width: 100%;
-    margin-bottom: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-/* --- Títulos y Tipografías --- */
-h1, .fecha {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #2198FC;
-    margin-bottom: 10px;
-}
-
-.imagen-titulo {
-    max-width: 80%;
-    margin-bottom: 20px;
-}
-
-/* --- Contador --- */
+/* =========================
+   8. CONTADOR
+========================= */
 #contador {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -150,20 +192,25 @@ h1, .fecha {
 
 .tiempo span {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
-/* --- Botón WhatsApp --- */
+/* =========================
+   9. BOTÓN WHATSAPP
+========================= */
 .boton-whatsapp {
     display: inline-block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+
     background: #25d366;
     color: white;
-    padding: 15px 25px;
-    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    width: 100%;
+
+    border-radius: 30px;
     transition: transform 0.3s;
 }
 
@@ -171,6 +218,11 @@ h1, .fecha {
     transform: scale(1.05);
 }
 
-
-
-
+/* =========================
+   10. RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .hero img {
+        max-width: 100%;
+    }
+}
