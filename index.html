@@ -14,7 +14,7 @@
         <div class="overlay-text">
             <p>Cumpleaños</p>
             <h1>Jesús</h1>
-            <p class="edad">16/05/26</p>
+            <p class="fecha">16/05/26</p>
         </div>
     </div>
 
@@ -31,11 +31,23 @@
                 <p class="hora">09:00 PM</p>
                 
                 <div class="lugar-contenedor">
-                    <p class="nombre-lugar">GRACIELA'S RESTAURANTE</p>
+                    <p class="nombre-lugar">Granja Daniel’s</p>
                     <p class="direccion">
-                        CARRETERA INT. KM. 3 TRAMO CD.<br>
-                        OBREGÓN - ESPERANZA, ZONA NTE.
+                        C. Nectarina, 31183 Chihuahua, Chih.<br>
                     </p>
+                    <a 
+                        href="https://maps.app.goo.gl/v6Xxred51cgk2fbZ6" target="_blank"
+                        target="_blank"
+                        class="boton-mapa"
+                    >
+                    <div class="mapa">
+    <iframe 
+        src="https://www.google.com/maps?q=Granja+Daniels+Chihuahua&output=embed"
+        loading="lazy">
+    </iframe>
+</div>
+                        Ver en el mapa
+                    </a>
                 </div>
 
                 <div class="vestimenta">
@@ -75,6 +87,29 @@
             </div>
         </section>
         
+        <section class="formulario">
+            <h2>Confirmua tu asistencia</h2>
+
+            <section class="formulario">
+    <h2>CONFIRMA TU ASISTENCIA</h2>
+
+    <form id="formAsistencia">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+
+        <select name="asistencia" required>
+            <option value="">¿Asistirás?</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <input type="number" name="acompanantes" placeholder="Acompañantes" min="0" required>
+
+        <button type="submit">Confirmar</button>
+    </form>
+
+    <p id="mensaje"></p>
+</section>
+        </section>
      
         
         

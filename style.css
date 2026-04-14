@@ -46,8 +46,10 @@ body {
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 .overlay-text p {
+    font-family: 'Parisienne', cursive;
     letter-spacing: 3px;
     font-size: 3rem;
+    color: #dbdbd8;
 }
 .overlay-text h1 {
     font-family: 'Parisienne', cursive;
@@ -55,9 +57,9 @@ body {
     color: #b9b8b8;
     margin: 10px 0;
 }
-.overlay-text .edad {
+.overlay-text .fecha {
     font-size: 2rem;
-    color: #ebe5e5;
+    color: #e2dddd;
 }
 
 
@@ -132,17 +134,12 @@ body {
 .seccion-contador {
     width: 100%;
     margin-bottom: 25px;
-    padding: 25px;
-
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     text-align: center;
+}
+
+section {
+    padding: 40px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 /* =========================
@@ -169,10 +166,28 @@ body {
     font-size: 0.9rem;
     opacity: 0.8;
 }
+.boton-mapa {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+
+    background: transparent;
+    color: #c0c0c0;
+    
+    border: 1PX solid #c0c0c0;
+    border-radius: 25px;
+
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1PX;
+
+    transition: transform 1px;
+}
 
 .vestimenta {
     margin-top: 15px;
 }
+
 
 /* =========================
    8. CONTADOR
@@ -194,6 +209,34 @@ body {
     display: block;
     font-size: 1.4rem;
     font-weight: bold;
+}
+
+.formulario {
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background: #C0C0C0;
+    color: #0A1F44;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* =========================
