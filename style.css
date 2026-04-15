@@ -1,3 +1,9 @@
+:root {
+    --azul-principal: #2563EB;
+    --azul-claro: #60A5FA;
+    --azul-oscuro: #1E3A8A;
+    --plateado: #C0C0C0;
+}
 /* =========================
    1. RESET (limpia estilos por defecto)
 ========================= */
@@ -41,26 +47,26 @@ body {
     transform: translate(-50%, -50%); /* centrado perfecto */
     text-align: center;
     width: 90%;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
 }
 
 .overlay-text p {
     font-family: 'Parisienne', cursive;
     font-size: 3rem;
     letter-spacing: 3px;
-    color: #dbdbd8;
+    color: #93C5FD;
 }
 
 .overlay-text h1 {
     font-family: 'Parisienne', cursive;
     font-size: 6rem;
     margin: 10px 0;
-    color: #b9b8b8;
+    color: #E5E7EB;
 }
 
 .overlay-text .fecha {
     font-size: 2rem;
-    color: #e2dddd;
+    color: #93C5FD;
 }
 
 /* Oscurece imagen */
@@ -146,7 +152,7 @@ section:last-child {
 .fecha {
     font-family: 'Rokkitt', serif;
     font-size: 2.8rem;
-    color: #858480;
+    color: var(--azul-claro);
     margin: 15px 0;
 }
 
@@ -155,6 +161,8 @@ section:last-child {
     margin-bottom: 15px;
     opacity: 0.7;
 }
+
+
 
 .nombre-lugar {
     font-weight: bold;
@@ -180,36 +188,16 @@ section:last-child {
 
 .mapa iframe {
     width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
     height: 260px;
     border: none;
     display: block;
 }
 
-/* =========================
-   9. BOTONES
-========================= */
-
-/* Botón mapa */
-.boton-mapa {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 25px;
-
-    background: linear-gradient(135deg, #1E3A8A, #2563EB);
-    color: white;
-
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-
-    transition: all 0.3s ease;
+small {
+    color: var(--plateado);
 }
-
-.boton-mapa:hover {
-    transform: translateY(-2px);
-}
-
-
 
 /* =========================
    10. CONTADOR
@@ -222,8 +210,9 @@ section:last-child {
 }
 
 .tiempo {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    padding: 12px;
     border-radius: 12px;
 }
 
@@ -231,6 +220,8 @@ section:last-child {
     display: block;
     font-size: 1.4rem;
     font-weight: bold;
+    color: var(--azul-claro);
+    font-size: 1.6rem;
 }
 
 /* =========================
@@ -280,7 +271,7 @@ button {
     border: none;
     border-radius: 30px;
 
-    background: linear-gradient(135deg, #1E3A8A, #2563EB);
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-principal));
     color: white;
 
     font-weight: 600;
@@ -289,6 +280,7 @@ button {
 
     cursor: pointer;
     transition: all 0.3s ease;
+    
 }
 
 /* Hover */
