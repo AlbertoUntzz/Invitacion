@@ -32,23 +32,43 @@ function actualizarContador() {
 setInterval(actualizarContador, 1000);
 
 actualizarContador();
+
+// Verificar si ya respondió
+/*const yaRespondio = localStorage.getItem("confirmado");
+
+if (yaRespondio) {
+    document.getElementById("formAsistencia").style.display = "none";
+    document.getElementById("mensaje").textContent = "✅ Ya confirmaste tu asistencia";
+}*/
+
+
 const form = document.getElementById("formAsistencia");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const data = {
+    const datos = {
         nombre: form.nombre.value,
         asistencia: form.asistencia.value,
         acompanantes: form.acompanantes.value
     };
 
-    await fetch("https://script.google.com/macros/s/AKfycby8xt_YNatFCJn4ciTbfZgBy2FRkBTFlhiCiC0SJDTpoFg7f0KUdwHNjP0Nj-_QmZqW/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-    });
+    try {
+        await fetch(URL, {
+            method: "POST",
+            body: JSON.stringify(datos)
+        });
 
-    document.getElementById("mensaje").textContent = "¡Gracias por confirmar!";
-    form.reset();
+        // 🔥 GUARDAR QUE YA RESPONDIÓ
+        localStorage.setItem("confirmado", "true");
+
+        mensaje.textContent = "✅ Confirmación enviada";
+        form.reset();
+
+        // Ocultar formulario
+        form.style.display = "none";
+
+    } catch (error) {
+        mensaje.textContent = "❌ Error al enviar";
+    }
 });
-
