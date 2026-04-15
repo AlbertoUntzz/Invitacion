@@ -43,7 +43,7 @@ form.addEventListener("submit", async (e) => {
         acompanantes: form.acompanantes.value
     };
 
-    await fetch("https://script.google.com/macros/s/AKfycbwUJdV0PoZND629gichOTvvd9TlRkrruSrBcrNpq7SxKIJZ9fEHgqLCEhuMbpZuNap5/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycby8xt_YNatFCJn4ciTbfZgBy2FRkBTFlhiCiC0SJDTpoFg7f0KUdwHNjP0Nj-_QmZqW/exec", {
         method: "POST",
         body: JSON.stringify(data)
     });
