@@ -1,32 +1,30 @@
 /* =========================
-   1. RESET
+   1. RESET (limpia estilos por defecto)
 ========================= */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* padding no rompe tamaños */
     margin: 0;
     padding: 0;
 }
 
 /* =========================
-   2. BODY
+   2. BASE (body general)
 ========================= */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #000000;
+    background-color: #000;
     color: white;
 }
 
 /* =========================
-   3. HERO (IMAGEN PRINCIPAL)
+   3. HERO (imagen principal)
 ========================= */
 .hero {
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
-    position: relative;
     background: #000;
-    position: relative;
-    width: 100%;
 }
 
 .hero img {
@@ -35,66 +33,60 @@ body {
     display: block;
 }
 
+/* Overlay (texto encima de la imagen) */
 .overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* centrado perfecto */
     text-align: center;
-    color: white;
     width: 90%;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
+
 .overlay-text p {
     font-family: 'Parisienne', cursive;
-    letter-spacing: 3px;
     font-size: 3rem;
+    letter-spacing: 3px;
     color: #dbdbd8;
 }
+
 .overlay-text h1 {
     font-family: 'Parisienne', cursive;
     font-size: 6rem;
-    color: #b9b8b8;
     margin: 10px 0;
+    color: #b9b8b8;
 }
+
 .overlay-text .fecha {
     font-size: 2rem;
     color: #e2dddd;
 }
 
-
-/* Solo en pantallas grandes */
-@media (min-width: 1024px) {
-    .hero img {
-        width: 100%;
-        max-height: 90vh;   /* no se hace gigante vertical */
-        object-fit: cover;  /* se adapta bonito */
-    }
-}
-
-/* Degradado elegante abajo */
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #000);
-}
-
+/* Oscurece imagen */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.30);
 }
+
+/* Degradado abajo */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #000);
+}
+
 /* =========================
-   4. CONTENEDOR PRINCIPAL
+   4. CONTENEDOR (layout principal)
 ========================= */
 .pantalla-celular {
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; /* tipo celular */
     margin: 0 auto;
     padding: 20px;
 
@@ -104,7 +96,7 @@ body {
 }
 
 /* =========================
-   5. ANIMACIÓN
+   5. ANIMACIONES
 ========================= */
 .contenido-principal {
     width: 100%;
@@ -127,19 +119,25 @@ body {
 }
 
 /* =========================
-   6. TARJETAS (GLASS EFFECT)
+   6. SECCIONES (estructura)
 ========================= */
 .info-evento,
 .confirmacion-contenedor,
 .seccion-contador {
     width: 100%;
-    margin-bottom: 25px;
     text-align: center;
+    margin-bottom: 50px;
+}
+.info-evento p {
+    margin-bottom: 10px;
 }
 
 section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+section:last-child {
+    border-bottom: none;
 }
 
 /* =========================
@@ -147,14 +145,15 @@ section {
 ========================= */
 .fecha {
     font-family: 'Rokkitt', serif;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #858480;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .hora {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 15px;
+    opacity: 0.7;
 }
 
 .nombre-lugar {
@@ -166,31 +165,54 @@ section {
     font-size: 0.9rem;
     opacity: 0.8;
 }
-.boton-mapa {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 20px;
-
-    background: transparent;
-    color: #c0c0c0;
-    
-    border: 1PX solid #c0c0c0;
-    border-radius: 25px;
-
-    text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 1PX;
-
-    transition: transform 1px;
-}
 
 .vestimenta {
     margin-top: 15px;
 }
 
+/* =========================
+   8. MAPA
+========================= */
+.mapa {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.mapa iframe {
+    width: 100%;
+    height: 260px;
+    border: none;
+    display: block;
+}
 
 /* =========================
-   8. CONTADOR
+   9. BOTONES
+========================= */
+
+/* Botón mapa */
+.boton-mapa {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+
+    background: linear-gradient(135deg, #1E3A8A, #2563EB);
+    color: white;
+
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+.boton-mapa:hover {
+    transform: translateY(-2px);
+}
+
+
+
+/* =========================
+   10. CONTADOR
 ========================= */
 #contador {
     display: grid;
@@ -211,6 +233,9 @@ section {
     font-weight: bold;
 }
 
+/* =========================
+   11. FORMULARIO
+========================= */
 .formulario {
     width: 100%;
     margin-top: 40px;
@@ -220,7 +245,7 @@ section {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 input, select {
@@ -231,8 +256,9 @@ input, select {
 
 button {
     padding: 12px;
-    border: none;
     border-radius: 20px;
+    border: none;
+
     background: #C0C0C0;
     color: #0A1F44;
     font-weight: bold;
@@ -240,30 +266,26 @@ button {
 }
 
 /* =========================
-   9. BOTÓN WHATSAPP
+   12. RESPONSIVE
 ========================= */
-.boton-whatsapp {
-    display: inline-block;
-    width: 100%;
-    margin-top: 15px;
-    padding: 15px;
 
-    background: #25d366;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
+/* PC */
+@media (min-width: 1024px) {
+    .pantalla-celular {
+        max-width: 800px; /* más ancho en escritorio */
+    }
 
-    border-radius: 30px;
-    transition: transform 0.3s;
+    .hero img {
+        max-height: 90vh;
+        object-fit: cover;
+    }
+
+    .mapa iframe {
+        height: 350px;
+    }
 }
 
-.boton-whatsapp:hover {
-    transform: scale(1.05);
-}
-
-/* =========================
-   10. RESPONSIVE
-========================= */
+/* Móvil */
 @media (max-width: 768px) {
     .hero img {
         max-width: 100%;
