@@ -1,30 +1,43 @@
+
+/* =========================
+   1. VARIABLES
+========================= */
+
 :root {
     --azul-principal: #2563EB;
     --azul-claro: #60A5FA;
     --azul-oscuro: #1E3A8A;
     --plateado: #C0C0C0;
 }
+
 /* =========================
-   1. RESET (limpia estilos por defecto)
+   2. RESET
 ========================= */
+
 * {
-    box-sizing: border-box; /* padding no rompe tamaños */
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 /* =========================
-   2. BASE (body general)
+   3. BASE
 ========================= */
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: white;
 }
 
+small {
+    color: var(--plateado);
+}
+
 /* =========================
-   3. HERO (imagen principal)
+   4. HERO
 ========================= */
+
 .hero {
     position: relative;
     width: 100%;
@@ -39,12 +52,31 @@ body {
     display: block;
 }
 
-/* Overlay (texto encima de la imagen) */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.30);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #000);
+}
+
+/* =========================
+   5. OVERLAY HERO
+========================= */
+
 .overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* centrado perfecto */
+    transform: translate(-50%, -50%);
     text-align: center;
     width: 90%;
     text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
@@ -69,30 +101,13 @@ body {
     color: #93C5FD;
 }
 
-/* Oscurece imagen */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.30);
-}
-
-/* Degradado abajo */
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #000);
-}
-
 /* =========================
-   4. CONTENEDOR (layout principal)
+   6. LAYOUT
 ========================= */
+
 .pantalla-celular {
     width: 100%;
-    max-width: 500px; /* tipo celular */
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
 
@@ -101,9 +116,20 @@ body {
     align-items: center;
 }
 
+section {
+    width: 100%;
+    padding: 60px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
 /* =========================
-   5. ANIMACIONES
+   7. INFO EVENTO
 ========================= */
+
 .contenido-principal {
     width: 100%;
     text-align: center;
@@ -113,20 +139,6 @@ body {
     animation-delay: 1.5s;
 }
 
-@keyframes aparecerTexto {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   6. SECCIONES (estructura)
-========================= */
 .info-evento,
 .confirmacion-contenedor,
 .seccion-contador {
@@ -134,21 +146,11 @@ body {
     text-align: center;
     margin-bottom: 50px;
 }
+
 .info-evento p {
     margin-bottom: 10px;
 }
 
-section {
-    padding: 60px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-section:last-child {
-    border-bottom: none;
-}
-
-/* =========================
-   7. TIPOGRAFÍA
-========================= */
 .fecha {
     font-family: 'Rokkitt', serif;
     font-size: 2.8rem;
@@ -162,8 +164,6 @@ section:last-child {
     opacity: 0.7;
 }
 
-
-
 .nombre-lugar {
     font-weight: bold;
     margin-top: 10px;
@@ -174,13 +174,63 @@ section:last-child {
     opacity: 0.8;
 }
 
-.vestimenta {
-    margin-top: 15px;
+/* =========================
+   8. DRESS CODE
+========================= */
+
+.vestimenta{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.dress-label{
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    opacity: 0.65;
+    margin-bottom: 12px;
+}
+
+.dress-code{
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    color: white;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.12),
+    0 0 20px rgba(110,162,255,0.18);
+
+    position: relative;
+
+    display: inline-block;
+}
+
+.dress-code::after{
+    content: "";
+
+    display: block;
+
+    width: 60%;
+
+    height: 2px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #6ea2ff,
+        transparent
+    );
 }
 
 /* =========================
-   8. MAPA
+   9. MAPA
 ========================= */
+
 .mapa {
     width: 100%;
     margin-top: 30px;
@@ -195,44 +245,75 @@ section:last-child {
     display: block;
 }
 
-small {
-    color: var(--plateado);
-}
-
 /* =========================
    10. CONTADOR
 ========================= */
-#contador {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 15px;
+
+.seccion-contador{
+    margin-top: 60px;
+    text-align: center;
+    color: white;
 }
 
-.tiempo {
-    background: rgba(37, 99, 235, 0.1);
-    border: 1px solid rgba(37, 99, 235, 0.3);
-    padding: 12px;
-    border-radius: 12px;
+.seccion-contador p{
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 25px;
 }
 
-.tiempo span {
-    display: block;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--azul-claro);
-    font-size: 1.6rem;
+#contador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tiempo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tiempo span{
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+
+    color: #6ea2ff;
+
+    text-shadow:
+    0 0 12px rgba(110,162,255,0.45),
+    0 0 25px rgba(110,162,255,0.2);
+}
+
+.tiempo small{
+    margin-top: 10px;
+
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+
+    opacity: 0.75;
 }
 
 /* =========================
    11. FORMULARIO
 ========================= */
 
-
 .formulario {
     width: 100%;
     margin-top: 50px;
     text-align: center;
+
+    animation: aparecerTexto 1s ease-out;
+}
+
+.titulo-formulario {
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 form {
@@ -241,37 +322,43 @@ form {
     gap: 20px;
 }
 
-input, select {
+input,
+select {
     width: 100%;
     padding: 12px 16px;
 
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
+
     color: white;
     font-size: 0.95rem;
+
     outline: none;
     transition: all 0.3s ease;
-    
 }
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Focus (cuando escriben) */
-input:focus, select:focus {
+input:focus,
+select:focus {
     border-color: #2563EB;
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Botón principal */
 button {
     padding: 14px;
     border: none;
     border-radius: 30px;
 
-    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-principal));
+    background: linear-gradient(
+        135deg,
+        var(--azul-oscuro),
+        var(--azul-principal)
+    );
+
     color: white;
 
     font-weight: 600;
@@ -280,42 +367,141 @@ button {
 
     cursor: pointer;
     transition: all 0.3s ease;
-    
 }
 
-/* Hover */
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
 }
 
-/* Mensaje */
 #mensaje {
     margin-top: 15px;
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
-.titulo-formulario {
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    opacity: 0.7;
- 
-}
-   .formulario {
-    animation: aparecerTexto 1s ease-out;
-}
-
-
 /* =========================
-   12. RESPONSIVE
+   12. MODAL
 ========================= */
 
-/* PC */
+.modal{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.35s ease;
+
+    backdrop-filter: blur(6px);
+
+    z-index: 1000;
+}
+
+.modal.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content{
+    width: 85%;
+    max-width: 420px;
+
+    padding: 35px 25px;
+
+    border-radius: 28px;
+
+    background: rgba(20,20,30,0.92);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.45),
+    0 0 20px rgba(70,120,255,0.15);
+
+    text-align: center;
+
+    color: white;
+
+    transform: translateY(40px) scale(0.92);
+    transition: 0.35s ease;
+}
+
+.modal.active .modal-content{
+    transform: translateY(0) scale(1);
+}
+
+.modal-content h2{
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.modal-content p{
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+}
+
+.modal-content button{
+    margin-top: 25px;
+
+    padding: 14px 34px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #3f6df6,
+        #2743b5
+    );
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.modal-content button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(63,109,246,0.45);
+}
+
+/* =========================
+   13. ANIMACIONES
+========================= */
+
+@keyframes aparecerTexto {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   14. RESPONSIVE
+========================= */
+
 @media (min-width: 1024px) {
+
     .pantalla-celular {
-        max-width: 800px; /* más ancho en escritorio */
+        max-width: 800px;
     }
 
     .hero img {
@@ -328,9 +514,22 @@ button:hover {
     }
 }
 
-/* Móvil */
 @media (max-width: 768px) {
+
     .hero img {
         max-width: 100%;
     }
+
+    .overlay-text h1 {
+        font-size: 4rem;
+    }
+
+    .overlay-text p {
+        font-size: 2rem;
+    }
+
+    .tiempo span {
+        font-size: 3rem;
+    }
 }
+

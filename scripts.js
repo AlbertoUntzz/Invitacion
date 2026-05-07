@@ -1,7 +1,7 @@
 // =========================
 // CONTADOR FUNCIONANDO
 // =========================
-
+const mensaje = document.getElementById("mensaje");
 // Fecha del evento (prueba cercana primero)
 const fechaEvento = new Date("2026-05-16T21:00:00").getTime();
 
@@ -34,12 +34,12 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // Verificar si ya respondió
-/*const yaRespondio = localStorage.getItem("confirmado");
+const yaRespondio = localStorage.getItem("confirmado");
 
 if (yaRespondio) {
     document.getElementById("formAsistencia").style.display = "none";
     document.getElementById("mensaje").textContent = "✅ Ya confirmaste tu asistencia";
-}*/
+}
 
 
 const form = document.getElementById("formAsistencia");
@@ -47,6 +47,12 @@ const form = document.getElementById("formAsistencia");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const acompanantes = parseInt(form.acompanantes.value);
+
+    if (acompanantes > 5) {
+    mensaje.textContent = "Máximo 5 acompañantes";
+    return;
+}
     const datos = {
         nombre: form.nombre.value,
         asistencia: form.asistencia.value,
@@ -63,6 +69,7 @@ form.addEventListener("submit", async (e) => {
         localStorage.setItem("confirmado", "true");
 
         mensaje.textContent = "✅ Confirmación enviada";
+        document.getElementById("modal").classList.add("active");
         form.reset();
 
         // Ocultar formulario
@@ -72,3 +79,7 @@ form.addEventListener("submit", async (e) => {
         mensaje.textContent = "❌ Error al enviar";
     }
 });
+
+function cerrarModal(){
+    document.getElementById("modal").classList.remove("active");
+}

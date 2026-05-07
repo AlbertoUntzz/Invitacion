@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="vestimenta">
-                    <p>CODIGO DE VESTIMENTA:</p>
-                    <p><strong>NEGRO Y GRIS</strong></p>
+                    <p class="dress-label">CODIGO DE VESTIMENTA:</p>
+                    <h3 class="dress-code">NEGRO Ó GRIS</h3>
                 </div>
             </div>
 
@@ -84,10 +84,30 @@
             <option value="No">No</option>
         </select>
 
-        <input type="number" name="acompanantes" placeholder="Acompañantes" min="0" required>
+        <input type="number" name="acompanantes" placeholder="Acompañantes" min="0" max="5" required>
 
         <button type="submit">Confirmar</button>
     </form>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>🎉 ¡Asistencia confirmada!</h2>
+
+            <p>
+            Nos vemos este 16 de mayo
+            </p>
+
+            <p>
+            Contaremos con alberca
+            <br>
+            No olvides llevar tu consumo
+            </p>
+            
+            <button onclick="cerrarModal()">Cerrar</button>
+
+        </div>
+        
+    </div>
 
     <p id="mensaje"></p>
 </section>
