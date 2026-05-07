@@ -34,12 +34,17 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // Verificar si ya respondió
-const yaRespondio = localStorage.getItem("confirmado");
+/*const yaRespondio = localStorage.getItem("confirmado");
+
 
 if (yaRespondio) {
     document.getElementById("formAsistencia").style.display = "none";
-    document.getElementById("mensaje").textContent = "Ya confirmaste tu asistencia";
-}
+    mensaje.innerHTML =  `
+    <div class="mensaje-exito">
+    ✨ Ya confirmaste tu asistencia
+    </div>
+    `;
+}*/
 
 
 const form = document.getElementById("formAsistencia");
@@ -50,7 +55,11 @@ form.addEventListener("submit", async (e) => {
     const acompanantes = parseInt(form.acompanantes.value);
 
     if (acompanantes > 3) {
-    mensaje.textContent = "Máximo 3 acompañantes";
+    mensaje.innerHTML = `
+    <div class="mensaje-error">
+     No puedes llevar más de 3 acompañantes
+    </div>
+    `;
     return;
 }
     const datos = {
@@ -68,7 +77,11 @@ form.addEventListener("submit", async (e) => {
         // 🔥 GUARDAR QUE YA RESPONDIÓ
         localStorage.setItem("confirmado", "true");
 
-        mensaje.textContent = "Confirmación enviada";
+        mensaje.innerHTML = `
+        <div class="mensaje-exito">
+        ¡Asistencia confirmada!
+        </div>
+        `;
         document.getElementById("modal").classList.add("active");
         form.reset();
 
@@ -76,7 +89,11 @@ form.addEventListener("submit", async (e) => {
         form.style.display = "none";
 
     } catch (error) {
-        mensaje.textContent = "❌ Error al enviar";
+        mensaje.innerHTML = `
+        <div class="mensaje-error">
+        Error al enviar la confirmación
+        </div>
+        `;
     }
 });
 
