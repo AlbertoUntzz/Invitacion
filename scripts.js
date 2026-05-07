@@ -41,7 +41,7 @@ if (yaRespondio) {
     document.getElementById("formAsistencia").style.display = "none";
     mensaje.innerHTML =  `
     <div class="mensaje-exito">
-    ✨ Ya confirmaste tu asistencia
+    Ya confirmaste tu asistencia
     </div>
     `;
 }
@@ -50,8 +50,13 @@ if (yaRespondio) {
 const form = document.getElementById("formAsistencia");
 const boton = form.querySelector("button");
 
+let enviado = false;
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (enviado) return;
+    enviado = true;
 
     const acompanantes = parseInt(form.acompanantes.value);
 
