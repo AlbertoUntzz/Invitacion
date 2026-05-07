@@ -34,7 +34,7 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // Verificar si ya respondió
-/*const yaRespondio = localStorage.getItem("confirmado");
+const yaRespondio = localStorage.getItem("confirmado");
 
 
 if (yaRespondio) {
@@ -44,7 +44,7 @@ if (yaRespondio) {
     Ya confirmaste tu asistencia
     </div>
     `;
-}*/
+}
 
 
 const form = document.getElementById("formAsistencia");
