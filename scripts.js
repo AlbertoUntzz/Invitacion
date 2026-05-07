@@ -38,7 +38,7 @@ const yaRespondio = localStorage.getItem("confirmado");
 
 if (yaRespondio) {
     document.getElementById("formAsistencia").style.display = "none";
-    document.getElementById("mensaje").textContent = "✅ Ya confirmaste tu asistencia";
+    document.getElementById("mensaje").textContent = "Ya confirmaste tu asistencia";
 }
 
 
@@ -49,8 +49,8 @@ form.addEventListener("submit", async (e) => {
 
     const acompanantes = parseInt(form.acompanantes.value);
 
-    if (acompanantes > 5) {
-    mensaje.textContent = "Máximo 5 acompañantes";
+    if (acompanantes > 3) {
+    mensaje.textContent = "Máximo 3 acompañantes";
     return;
 }
     const datos = {
@@ -68,7 +68,7 @@ form.addEventListener("submit", async (e) => {
         // 🔥 GUARDAR QUE YA RESPONDIÓ
         localStorage.setItem("confirmado", "true");
 
-        mensaje.textContent = "✅ Confirmación enviada";
+        mensaje.textContent = "Confirmación enviada";
         document.getElementById("modal").classList.add("active");
         form.reset();
 
