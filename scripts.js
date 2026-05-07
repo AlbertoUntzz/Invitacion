@@ -48,6 +48,7 @@ if (yaRespondio) {
 
 
 const form = document.getElementById("formAsistencia");
+const boton = form.querySelector("button");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -67,6 +68,11 @@ form.addEventListener("submit", async (e) => {
         asistencia: form.asistencia.value,
         acompanantes: form.acompanantes.value
     };
+
+    // bloquear botón
+    boton.disabled = true;
+
+    boton.textContent = "Enviando...";
 
     try {
         await fetch('https://script.google.com/macros/s/AKfycbzVHEep8OabHSTtCBBxsseqaIQIciMTRGFO8LIqsMsreKo-5_YFwxopLaK6o0M0A99l/exec', {
@@ -94,6 +100,10 @@ form.addEventListener("submit", async (e) => {
         Error al enviar la confirmación
         </div>
         `;
+
+        boton.disabled = false;
+
+        boton.textContent = "Confirmar";
     }
 });
 
