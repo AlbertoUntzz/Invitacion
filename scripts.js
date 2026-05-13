@@ -13,12 +13,29 @@ function actualizarContador() {
     const diferencia = fechaEvento - ahora;
 
     if (diferencia <= 0) {
+        clearInterval(intervalo);
 
-        document.getElementById("contador")
-        .innerHTML = "🎉 ¡ES HOY!";
+    document.getElementById("contador")
+    .innerHTML = `
 
-        return;
-    }
+    <div class="cumpleanos-mensaje">
+
+        <h2>
+                FELIZ CUMPLEAÑOS JESÚS 
+        </h2>
+
+        <p>
+            Que te la pases bien
+            <br>
+            chicle bomba en tu cumpleaños 
+        </p>
+
+    </div>
+
+    `;
+
+    return;
+}
 
     const dias = Math.floor(
         diferencia / (1000 * 60 * 60 * 24)
@@ -42,7 +59,8 @@ function actualizarContador() {
     document.getElementById("segundos").textContent = segundos;
 }
 
-setInterval(actualizarContador, 1000);
+const intervalo = setInterval(actualizarContador, 1000);
+
 
 actualizarContador();
 
@@ -208,7 +226,7 @@ form.addEventListener("submit", async (e) => {
 
         boton.disabled = false;
 
-        boton.textContent = "Confirmar";
+        boton.textContent = "Confirmar";k
 
         enviado = false;
     }
