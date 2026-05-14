@@ -1,7 +1,7 @@
 // =========================
 // CONTADOR
 // =========================
-
+const formularioCerrado = true;
 const mensaje = document.getElementById("mensaje");
 
 const fechaEvento = new Date("2026-05-16T21:00:00").getTime();
@@ -103,6 +103,67 @@ if (yaRespondio) {
 // =========================
 
 const form = document.getElementById("formAsistencia");
+
+ 
+if (formularioCerrado) {
+
+    form.style.display = "none";
+
+    // SI YA CONFIRMÓ
+    if (yaRespondio) {
+
+        document.getElementById("tituloAsistencia")
+        .innerHTML = `
+
+        <div class="estado-confirmado">
+
+            <h3>
+                ✨ Tu confirmación ya fue enviada
+            </h3>
+
+            <p>
+                🏊 Habrá alberca
+            </p>
+
+            <p>
+                🍹 No olvides llevar tu consumo
+            </p>
+
+            <br>
+
+            <p>
+                🔒 Confirmaciones cerradas
+            </p>
+
+        </div>
+        `;
+
+    } else {
+
+        // SI NO CONFIRMÓ
+        document.getElementById("tituloAsistencia")
+        .innerHTML = `
+
+        <div class="estado-confirmado">
+
+            <h3>
+                Confirmaciones cerradas
+            </h3>
+
+            <p>
+                Gracias por el interés
+            </p>
+
+            <p>
+                El aforo del evento
+                ha sido completado
+            </p>
+
+        </div>
+        `;
+    }
+}
+
 
 const boton = form.querySelector("button");
 
