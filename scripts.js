@@ -1,7 +1,9 @@
 // =========================
 // CONTADOR
 // =========================
+
 const formularioCerrado = true;
+
 const mensaje = document.getElementById("mensaje");
 
 const fechaEvento = new Date("2026-05-16T21:00:00").getTime();
@@ -12,31 +14,34 @@ function actualizarContador() {
 
     const diferencia = fechaEvento - ahora;
 
+    // CUANDO LLEGUE EL DÍA
     if (diferencia <= 0) {
+
         clearInterval(intervalo);
 
-    document.getElementById("contador")
-    .innerHTML = `
+        document.getElementById("contador")
+        .innerHTML = `
 
-    <div class="cumpleanos-mensaje">
+        <div class="cumpleanos-mensaje">
 
-        <h2>
-                FELIZ CUMPLEAÑOS JESÚS 
-        </h2>
+            <h2>
+                FELIZ CUMPLEAÑOS JESÚS
+            </h2>
 
-        <p>
-            Que te la pases bien
-            <br>
-            chicle bomba en tu cumpleaños 
-        </p>
+            <p>
+                Que te la pases bien
+                <br>
+                chicle bomba en tu cumpleaños
+            </p>
 
-    </div>
+        </div>
 
-    `;
+        `;
 
-    return;
-}
+        return;
+    }
 
+    // CONTADOR
     const dias = Math.floor(
         diferencia / (1000 * 60 * 60 * 24)
     );
@@ -59,43 +64,10 @@ function actualizarContador() {
     document.getElementById("segundos").textContent = segundos;
 }
 
+// EJECUTAR CONTADOR
 const intervalo = setInterval(actualizarContador, 1000);
 
-
 actualizarContador();
-
-
-// =========================
-// VERIFICAR SI YA RESPONDIÓ
-// =========================
-
-const yaRespondio = localStorage.getItem("confirmado");
-
-if (yaRespondio) {
-
-    document.getElementById("formAsistencia")
-    .style.display = "none";
-
-    document.getElementById("tituloAsistencia")
-    .innerHTML = `
-
-    <div class="estado-confirmado">
-
-        <h3>
-            Ya confirmaste tu asistencia
-        </h3>
-
-        <p>
-            Habrá alberca
-        </p>
-
-        <p>
-            No olvides llevar tu consumo
-        </p>
-
-    </div>
-    `;
-}
 
 
 // =========================
@@ -104,7 +76,17 @@ if (yaRespondio) {
 
 const form = document.getElementById("formAsistencia");
 
- 
+const boton = form.querySelector("button");
+
+const yaRespondio = localStorage.getItem("confirmado");
+
+let enviado = false;
+
+
+// =========================
+// CONFIRMACIONES CERRADAS
+// =========================
+
 if (formularioCerrado) {
 
     form.style.display = "none";
@@ -136,6 +118,7 @@ if (formularioCerrado) {
             </p>
 
         </div>
+
         `;
 
     } else {
@@ -160,14 +143,10 @@ if (formularioCerrado) {
             </p>
 
         </div>
+
         `;
     }
 }
-
-
-const boton = form.querySelector("button");
-
-let enviado = false;
 
 
 // =========================
@@ -178,6 +157,7 @@ form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
+    // EVITAR DUPLICADOS
     if (enviado) return;
 
     enviado = true;
@@ -234,27 +214,28 @@ form.addEventListener("submit", async (e) => {
     // UI INMEDIATA
     // =========================
 
-    localStorage.setItem("confirmado", "true");
+        localStorage.setItem("confirmado", "true");
 
-    document.getElementById("tituloAsistencia")
-    .innerHTML = `
+        document.getElementById("tituloAsistencia")
+        .innerHTML = `
 
-    <div class="estado-confirmado">
+        <div class="estado-confirmado">
 
-        <h3>
-            Ya confirmaste tu asistencia
-        </h3>
+            <h3>
+                Ya confirmaste tu asistencia
+            </h3>
 
-        <p>
-            Habrá alberca
-        </p>
+            <p>
+                Habrá alberca
+            </p>
 
-        <p>
-            No olvides llevar tu consumo
-        </p>
+            <p>
+                No olvides llevar tu consumo
+            </p>
 
-    </div>
-    `;
+        </div>
+
+        `;
 
     form.style.display = "none";
 
@@ -287,7 +268,7 @@ form.addEventListener("submit", async (e) => {
 
         boton.disabled = false;
 
-        boton.textContent = "Confirmar";k
+        boton.textContent = "Confirmar";
 
         enviado = false;
     }
