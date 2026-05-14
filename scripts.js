@@ -118,21 +118,21 @@ if (formularioCerrado) {
         <div class="estado-confirmado">
 
             <h3>
-                ✨ Tu confirmación ya fue enviada
+                Tu confirmación ya fue enviada
             </h3>
 
             <p>
-                🏊 Habrá alberca
+                Habrá alberca
             </p>
 
             <p>
-                🍹 No olvides llevar tu consumo
+                No olvides llevar tu consumo
             </p>
 
             <br>
 
             <p>
-                🔒 Confirmaciones cerradas
+                Confirmaciones cerradas
             </p>
 
         </div>
